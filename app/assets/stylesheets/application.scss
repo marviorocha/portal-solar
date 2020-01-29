@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
-body {
+
+@import url("bulma/css/bulma.min.css");
+  
+ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
