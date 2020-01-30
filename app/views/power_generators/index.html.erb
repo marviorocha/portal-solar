@@ -1,8 +1,9 @@
-<section class="hero is-success is-fullheight">
+<section class="hero is-success is-small">
   <div class="hero-body">
     <div class="container">
 
  <!-- start colum container hero------- // -->
+ <section class="section">
 <div class="columns">
 
 <div class="column is-5">
@@ -53,21 +54,32 @@
 </div>
 
 
+ </section>
 </div> <!-- End column hero------- // -->
+
 </section>
 
 
+<div class="section">
 
   <div class="container" >
+
+<div class="columns is-multiline">
+
     <% @power_generators.each do |power_generator| %>
-      <div class="box card power_generator-card">
-        <%= image_tag power_generator.image_url, class: 'power_generator-card__img' %>
-        <div class="power_generator-card__body">
+<div class="column is-4 card">
           <h2><%= power_generator.name.upcase %></h2>
-          <p class="power_generator-card__price"><%= number_to_currency(power_generator.price, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></p>
-          <p><strong>Descrição: </strong><%= power_generator.description %></p>
-        </div>
-      </div>
+  <%= image_tag power_generator.image_url, class: 'power_generator-card__img' %>
+          <%= number_to_currency(power_generator.price, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></p>
+          <p><strong>Descrição: </strong><%= power_generator.description.truncate(250, omission: '...')  %></p>
+ 
+</div>
+
     <% end %>
+</div>
+
+   
   </div>
+</div>
+
 </div>
