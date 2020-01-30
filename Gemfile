@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # My personal gems add to project
 
+gem 'fontawesome5-rails'
+gem 'correios-frete'
 
 # Ruby default gems
 

@@ -1,46 +1,62 @@
 <section class="hero is-success is-fullheight">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">
-        Pesquisa Simples
-      </h1>
-      <h2 class="subtitle">
-        Fullheight subtitle
-      </h2>
-    </div>
+
+ <!-- start colum container hero------- // -->
+<div class="columns">
+
+<div class="column is-5">
+ <div class="field">
+  <h1 class="title"> Pesquisa </h1>
+  <div class="control">
+    <label class="radio">
+    <%= radio_button_tag "sample", "sample", checked: true %>
+   Simples
+    </label>
+    <label class="radio">
+    <%= radio_button_tag "sample", "advanced" %>
+  Avançada
+    </label>
   </div>
+</div>
+</div>
+<div class="column is-4">
+
+
+
+<%= form_tag do  %>
+
+<div id="sample" class="field">
+<div class="control">
+<%= label_tag "Pesquisas Simples" %>
+<%= text_field_tag :simples, nil, placeholder: "O que procura?", class: "input" %>
+
+<div class="control">
+<%= button_tag fa_icon("search", text: "Pesquisar"), class: "button is-primary" %> 
+</div>
+
+</div>
+</div>
+
+<div id="advanced" style="display:none;" class="field">
+
+<div class="control">
+<%= label_tag "Pesquisa Avançada" %>
+ Entradas do usuário para pesquisar uma coleção de geradores de energia com base nas recomendações fornecidas e melhor custo de frete.
+</div>
+
+
+</div>
+ 
+<% end %>
+
+</div>
+
+
+</div> <!-- End column hero------- // -->
 </section>
 
 
-
-
-  <div class="searcher gradient">
-    <div class="searcher__radio">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="searchRadio" id="simpleSearch" value="simple" checked>
-        <label class="form-check-label" for="simpleSearch">Pesquisa simples</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="searchRadio" id="advancedSearch" value="advanced">
-        <label class="form-check-label" for="advancedSearch">Pesquisa Avançada</label>
-      </div>
-    </div>
-
-    <%= form_tag do %>
-      <div class="simple-form">
-        <div class="simple-form__input">
-          <input class="form-control form-control-lg" type="text" placeholder="o que procura?">
-        </div>
-        <div class="simple-form__btn">
-          <button type="submit" class="btn btn-outline-primary btn-lg">Pesquisar</button>
-        </div>
-      </div>
-
-      <div class="advanced-form" style="display:none;">
-        Entradas do usuário para pesquisar uma coleção de geradores de energia com base nas recomendações fornecidas e melhor custo de frete.
-      </div>
-    <% end %>
-  </div>
 
   <div class="container" >
     <% @power_generators.each do |power_generator| %>
