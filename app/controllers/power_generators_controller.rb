@@ -3,7 +3,7 @@ class PowerGeneratorsController < ApplicationController
   require 'correios-frete'
  
   def index
-    @power_generators = PowerGenerator.all
+    @power_generators = PowerGenerator.all.order(:name).page(params['page']).limit(6)
     @frete = Correios::Frete::Calculador.new
   end
 
@@ -22,7 +22,7 @@ class PowerGeneratorsController < ApplicationController
       else 
         format.html {redirect_to :new, alert: "Não foi possível gravar sua recomendação"}
       end
-      
+
     end
 
   end
