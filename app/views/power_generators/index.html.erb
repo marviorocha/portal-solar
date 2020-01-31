@@ -1,4 +1,32 @@
 <section class="hero is-success is-small">
+ <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+      
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item">
+              Home
+            </a>
+            <a class="navbar-item is-active">
+             Recomendar Gerador
+            </a>
+            <a class="navbar-item">
+              Documentation
+            </a>
+            <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span class="icon">
+                 <%= fa_icon('github') %>
+                </span>
+                <span>Github</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
   <div class="hero-body">
     <div class="container">
 
@@ -68,10 +96,15 @@
 
     <% @power_generators.each do |power_generator| %>
 <div class="column is-4 card">
+  
+  <figure class="image is-square">
+    <%= image_tag power_generator.image_url, class: 'power_generator-card__img' %>
+  </figure>
           <h2><%= power_generator.name.upcase %></h2>
-  <%= image_tag power_generator.image_url, class: 'power_generator-card__img' %>
+         <p class="title is-4 has-text-danger">
           <%= number_to_currency(power_generator.price, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></p>
-          <p><strong>Descrição: </strong><%= power_generator.description.truncate(250, omission: '...')  %></p>
+        <strong>Descrição: </strong><%= power_generator.description.truncate(250, omission: '...')  %> 
+          </p>
  
 </div>
 

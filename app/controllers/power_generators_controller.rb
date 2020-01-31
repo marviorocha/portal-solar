@@ -7,8 +7,23 @@ class PowerGeneratorsController < ApplicationController
     @frete = Correios::Frete::Calculador.new
   end
 
-  #create Power Gerador for user
+  # Recomendation Power Gerador for user
+  def new
+    @gerador = PowerGenerator.new
+  end
+  
   def create
+
+    format_to do |format|
+
+      if @gerador.save
+
+        format.html {redirect_to power_generator_path, notice: "Obrigado pela sua recomendação!"}
+      else 
+        format.html {redirect_to :new, alert: "Não foi possível gravar sua recomendação"}
+      end
+      
+    end
 
   end
 

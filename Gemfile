@@ -7,6 +7,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'fontawesome5-rails'
 gem 'correios-frete'
+gem 'kaminari'
 
 # Ruby default gems
 
