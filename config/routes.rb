@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   
   root to: 'power_generators#index'
   
-  resources :generators, only: %i["home"] do
+  resources :power_generators, only: %i["home"] do
 
-    get "search"
-    get "advanced"
+    
+      collection do
+        get :price_hight
+        get :price_low
+        get :name
+        get "search"
+        get "advanced"
+      end
+    
  
   end
 

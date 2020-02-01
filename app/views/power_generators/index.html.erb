@@ -90,8 +90,14 @@
 
 <div class="section">
 
-<div class="container">
 
+
+
+<div class="column">
+Filtrar por: <%= link_to  'Maior Preço', price_hight_power_generators_path %> |
+<%= link_to  'Menor Preço', price_low_power_generators_path %> | <%= link_to  'Nome', name_power_generators_path %> 
+</div>
+<div class="container">
 <div class="columns is-multiline">
 
     <% @power_generators.each do |power_generator| %>

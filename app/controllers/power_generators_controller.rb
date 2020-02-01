@@ -3,9 +3,28 @@ class PowerGeneratorsController < ApplicationController
   require 'correios-frete'
  
   def index
-    @power_generators = PowerGenerator.all.order(:name).page(params['page']).limit(6)
+    @power_generators = PowerGenerator.filter_name.page(params['page'])
     @frete = Correios::Frete::Calculador.new
   end
+
+
+   def price_low
+
+    @power_generators = PowerGenerator.filter_price_low.page(params['page'])
+    render :index
+  end 
+  
+  def price_hight
+
+    @power_generators = PowerGenerator.filter_price_hight.page(params['page'])
+    render :index
+  end
+
+  def name
+    @power_generators = PowerGenerator.filter_name.page(params['page'])
+    render :index
+  end
+
 
   # Recomendation Power Gerador for user
   def new
