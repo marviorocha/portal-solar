@@ -8,34 +8,37 @@ class PowerGeneratorsController < ApplicationController
   end
 
 
+  # Filter for low price                                                                                                                                                              
    def price_low
 
     @power_generators = PowerGenerator.filter_price_low.page(params['page'])
     render :index
   end 
   
+  # Filter for hight price
   def price_hight
 
     @power_generators = PowerGenerator.filter_price_hight.page(params['page'])
     render :index
   end
 
+  # Filter for name
   def name
     @power_generators = PowerGenerator.filter_name.page(params['page'])
     render :index
   end
 
 
-  # Recomendation Power Gerador for user
+  # Recomendation Power Generators for user
   def new
-    @gerador = PowerGenerator.new
+    @power_generators = PowerGenerator.new
   end
   
   def create
 
     format_to do |format|
 
-      if @gerador.save
+      if @power_generators.save
 
         format.html {redirect_to power_generator_path, notice: "Obrigado pela sua recomendação!"}
       else 

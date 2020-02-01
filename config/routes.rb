@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root to: 'power_generators#index'
   
-  resources :power_generators, only: %i["home"] do
+  resources :power_generators, only: ["home", "new" ] do
 
     
       collection do
