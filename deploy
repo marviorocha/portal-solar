@@ -1,0 +1,13 @@
+# Scrits for deploy to heroku by Marvio Rocha
+ 
+git add . -A
+git commit -m "Update to Deploy - by Marvio Rocha"
+git push origin developer
+
+# Starting make the merge github
+
+git checkout master 
+git merge developer
+git commit -m "Updated"
+git push origin master # push to master 
+
