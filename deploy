@@ -8,7 +8,8 @@ git push origin developer
 
 git checkout master 
 git merge developer
-git commit -m "Updated"
+git add . -A
+git commit -m "🤖 Updating Portal Solar"
 git push origin master # push to master 
 
 tag=deplyed_at_$(date + "%F_%H-%M")
