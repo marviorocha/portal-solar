@@ -4,10 +4,28 @@ git add . -A
 git commit -m "Update to Deploy - by Marvio Rocha"
 git push origin developer
 
-# Starting make the merge github
+# Starting make the merge for master github
 
 git checkout master 
 git merge developer
 git commit -m "Updated"
 git push origin master # push to master 
+
+tag=deplyed_at_$(date + "%F_%H-%M")
+
+git tag -m '' - $tag
+git push --follow-tags
+
+# Yahoo now let's go deploy to heroku
+
+git push heroku master 
+
+# Go back to developer :)
+
+git checkout developer 
+
+# Finish Script Deployer by Marvio Rocha Data: 02/02/2020
+
+
+
 
