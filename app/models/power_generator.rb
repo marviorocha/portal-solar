@@ -20,6 +20,11 @@ class PowerGenerator < ApplicationRecord
   scope :filter_price_hight, -> {order(price: :asc)}
   scope :filter_price_low, -> {order(price: :desc)}
 
+ # Simple Seach for Name 
+
+  scope :search_by_name, -> (name) { where("name like ?", "#{name}%")}
+
+
 
 # for Advanced Searching 
   enum structure_type: %i[

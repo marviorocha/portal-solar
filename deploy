@@ -1,6 +1,6 @@
 # Scrits for deploy to heroku by Marvio Rocha
  
-git add . -A
+git add -A
 git commit -m "Update to Deploy - by Marvio Rocha"
 git push origin developer
 
@@ -8,12 +8,12 @@ git push origin developer
 
 git checkout master 
 git merge developer
-git add . -A
+git add . 
 git commit -m "🤖 Updating Portal Solar"
-git push origin master # push to master 
+
+# Add tag update to branch 
 
 tag=deplyed_at_$(date + "%F_%H-%M")
-
 git tag -m '' - $tag
 git push --follow-tags
 
