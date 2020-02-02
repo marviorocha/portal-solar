@@ -1,5 +1,8 @@
-@import url("font-awesome");
-@import url("bulma/css/bulma.min.css");
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+ 
+ 
 
 // Set your brand colors
 $purple: #8A4D76;
@@ -9,17 +12,10 @@ $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
 
 // Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
+$family-sans-serif: "Lato", sans-serif;
  
 $primary: $prime;
 $link: $prime;
  
-@import "../node_modules/bulma/sass/utilities/_all.sass";
-@import "../node_modules/bulma/sass/base/_all.sass";
-@import "../node_modules/bulma/sass/elements/button.sass";
-@import "../node_modules/bulma/sass/elements/container.sass";
-@import "../node_modules/bulma/sass/elements/title.sass";
-@import "../node_modules/bulma/sass/form/_all.sass";
-@import "../node_modules/bulma/sass/components/navbar.sass";
-@import "../node_modules/bulma/sass/layout/hero.sass";
-@import "../node_modules/bulma/sass/layout/section.sass";
+
+@import "../node_modules/bulma/bulma.sass";

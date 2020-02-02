@@ -51,9 +51,15 @@ class PowerGeneratorsController < ApplicationController
 
   end
 
+  # Seaching product by Name
 
   def search
 
+  @power_generators = PowerGenerator.search_by_name(params['search']).page(params['page'])
+  
+  flash.now[:search] = "Pesquisando por: #{params['search']}"
+
+  render :index
   end
 
 

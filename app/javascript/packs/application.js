@@ -4,12 +4,13 @@
 // that code so it'll be compiled.
 
 
-var $ = require("jquery")
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+var $ = require("jquery")
 require("custom/search")
 
+ 
  
 
 // Uncomment to copy all static images under ../images to the output folder and reference

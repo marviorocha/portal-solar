@@ -1,6 +1,7 @@
  
   const $ = require("jquery");
- 
+
+  
 $(document).ready(function($){
 
   // jQuery methods go here...
