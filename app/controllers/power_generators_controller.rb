@@ -36,13 +36,15 @@ class PowerGeneratorsController < ApplicationController
   
   def create
 
-    format_to do |format|
+    @power_generators = PowerGenerator.new(generators_params)
+
+    respond_to do |format|
 
       if @power_generators.save
-
-        format.html {redirect_to power_generator_path, notice: "Obrigado pela sua recomendação!"}
+        format.html {redirect_to :index, notice: "Obrigado pela sua recomendação!"}
       else 
-        format.html {redirect_to :new, alert: "Não foi possível gravar sua recomendação"}
+        format.html {render :new}
+        flash.alert = @power_generators.errors.full_messages.to_sentence
       end
 
     end
@@ -57,13 +59,15 @@ class PowerGeneratorsController < ApplicationController
 
   private
 
+
+
   def generators_set
     @generators = PowerGenerator.find(params[:id])
   end
 
+
   def generators_params
-    require.(:power_generators).permit(:id, :name, :description, :image_url, :manufacturer, :structure_type,
-     :price, :height, :width, :lenght, :weight, :kwp)    
+    params.require(:power_generator).permit(:name, :description, :picture, :manufacturer)    
   end
 
 

@@ -1,22 +1,22 @@
-<section class="hero is-success is-small">
- <div class="hero-head">
+<section class="hero gradient is-small">
+  <div class="hero-head">
     <nav class="navbar">
       <div class="container">
-      
+
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item">
               Home
             </a>
             <%= link_to "Recomendar um Gerador", new_power_generator_path, class: 'navbar-item is-active' %>
-          
+
             <a class="navbar-item">
               Documentation
             </a>
             <span class="navbar-item">
               <a class="button is-primary is-inverted">
                 <span class="icon">
-                 <%= fa_icon('github') %>
+                  <%= fa_icon('github') %>
                 </span>
                 <span>Github</span>
               </a>
@@ -26,98 +26,109 @@
       </div>
     </nav>
   </div>
+
+
+
+
   <div class="hero-body">
     <div class="container">
 
- <!-- start colum container hero------- // -->
- <section class="section">
-<div class="columns">
+      <!-- start colum container hero------- // -->
+      <section class="section">
+        <div class="columns">
 
-<div class="column is-5">
- <div class="field">
-  <h1 class="title"> Pesquisa </h1>
-  <div class="control">
-    <label class="radio">
-    <%= radio_button_tag "sample", "sample", checked: true %>
-   Simples
-    </label>
-    <label class="radio">
-    <%= radio_button_tag "sample", "advanced" %>
-  Avançada
-    </label>
-  </div>
-</div>
-</div>
-<div class="column is-4">
-
-
-
-<%= form_tag do  %>
-
-<div id="sample" class="field">
-<div class="control">
-<%= label_tag "Pesquisas Simples" %>
-<%= text_field_tag :simples, nil, placeholder: "O que procura?", class: "input" %>
-
-<div class="control">
-<%= button_tag fa_icon("search", text: "Pesquisar"), class: "button is-primary" %> 
-</div>
-
-</div>
-</div>
-
-<div id="advanced" style="display:none;" class="field">
-
-<div class="control">
-<%= label_tag "Pesquisa Avançada" %>
- Entradas do usuário para pesquisar uma coleção de geradores de energia com base nas recomendações fornecidas e melhor custo de frete.
-</div>
+          <div class="column is-5">
+            <div class="field">
+              <h1 class="title"> Pesquisa </h1>
+              <div class="control">
+                <label class="radio">
+                  <%= radio_button_tag "sample", "sample", checked: true %>
+                  Simples
+                </label>
+                <label class="radio">
+                  <%= radio_button_tag "sample", "advanced" %>
+                  Avançada
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="column is-4">
 
 
-</div>
- 
-<% end %>
 
-</div>
+            <%= form_tag do  %>
+
+            <div id="sample" class="field">
+              <div class="control">
+                <%= label_tag "Pesquisas Simples" %>
+                <%= text_field_tag :simples, nil, placeholder: "O que procura?", class: "input" %>
+
+                <div class="control">
+                  <%= button_tag fa_icon("search", text: "Pesquisar"), class: "button is-primary" %>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="advanced" style="display:none;" class="field">
+
+              <div class="control">
+                <%= label_tag "Pesquisa Avançada" %>
+                Entradas do usuário para pesquisar uma coleção de geradores de energia com base nas recomendações
+                fornecidas e melhor custo de frete.
+              </div>
 
 
- </section>
-</div> <!-- End column hero------- // -->
+            </div>
+
+            <% end %>
+
+          </div>
+
+
+      </section>
+    </div> <!-- End column hero------- // -->
 
 </section>
 
-
-<div class="section">
-
-
-
-
-<div class="column">
-Filtrar por: <%= link_to  'Maior Preço', price_hight_power_generators_path %> |
-<%= link_to  'Menor Preço', price_low_power_generators_path %> | <%= link_to  'Nome', name_power_generators_path %> 
-</div>
-<div class="container">
-<div class="columns is-multiline">
-
-    <% @power_generators.each do |power_generator| %>
-<div class="column is-4 card">
-  
-  <figure class="image is-square">
-    <%= image_tag power_generator.image_url, class: 'power_generator-card__img' %>
-  </figure>
-          <h2><%= power_generator.name.upcase %></h2>
-         <p class="title is-4 has-text-danger">
-          <%= number_to_currency(power_generator.price, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></p>
-        <strong>Descrição: </strong><%= power_generator.description.truncate(250, omission: '...')  %> 
-          </p>
  
-</div>
 
-    <% end %>
-</div>
-   
+
+  <div class="container">
+<%= render('shared/notifications') %> 
+  <div class="column is-6">
+    Filtrar por: <%= link_to  'Maior Preço', price_hight_power_generators_path %> |
+    <%= link_to  'Menor Preço', price_low_power_generators_path %> | <%= link_to  'Nome', name_power_generators_path %>
+  </div>
+    <div class="columns is-multiline">
+
+      <% @power_generators.each do |power_generator| %>
+      <div class="column is-4 card">
+
+        <figure class="image is-square">
+          <% if power_generator.image_url %>
+          <%= image_tag power_generator.image_url, class: 'power_generator-card__img' %>
+          <% end %>
+        </figure>
+        <h2><%= power_generator.name.upcase %></h2>
+        <p class="title is-4 has-text-danger">
+          <%= number_to_currency(power_generator.price, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %>
+        </p>
+        <strong>Descrição: </strong><%= power_generator.description.truncate(250, omission: '...')  %>
+        </p>
+
+      </div>
+
+      <% end %>
+     <div class="section">
+     
+      <%= paginate @power_generators  %>
+     
+     </div>
+    </div>
+
   </div>
 </div>
 
-</div>
-<%= paginate @power_generators  %>
+
+ 

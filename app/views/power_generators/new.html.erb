@@ -1,17 +1,17 @@
 <section class="hero is-primary is-small">
-  <div class="hero-body">
-    <div class="container">
-      <section class="section">
-          <h1 class="title">
-            Recomendar um Gerador
-            </h1>
-            <h3 class="subtitle">
-                Preencha os dados abaixo para recomendar um gerador
-            </h3>
-        </section>
-   
+    <div class="hero-body">
+        <div class="container">
+            <section class="section">
+                <h1 class="title">
+                    Recomendar um Gerador
+                </h1>
+                <h3 class="subtitle">
+                    Preencha o formulário abaixo para recomendar um gerador
+                </h3>
+            </section>
+
+        </div>
     </div>
-  </div>
 </section>
 
 <section class="section">
@@ -19,8 +19,9 @@
         <div class="columns">
             <div class="column is-6">
 
-<%= render 'power_generators/form', generator: @power_generator %>
-            
+                <%= render('shared/notifications') %> 
+                <%= render 'power_generators/form', generator: @power_generator %>
+
             </div>
         </div>
     </div>

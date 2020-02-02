@@ -1,44 +1,43 @@
- 
- <%= form_with model: generator, local: true do |f| %>
+ <%= form_with model: @power_generators, local: true do |f| %>
 
-<div class="field">
-<div class="control">
-<%= f.label :name,  class: 'label' %>
-<%= f.text_field :name, class: 'input' %>
-</div>
-</div>
-
-<div class="field">
-<div class="control">
-<%= f.label :image_url, 'Image:', class: 'label' %>
-<%= f.file_field :image_url, class: 'input' %>
-</div>
-</div>
-
-<div class="field">
-<div class="control">
-<%= f.label :description, 'Descrição',  class: 'label' %>
-<%= f.text_area :description, class: 'textarea' %>
-</div>
-</div>
-
- 
-
-<div class="field">
-<div class="control">
-<%= f.label :manufacturer, 'Fabricante',  class: 'label' %>
-<%= f.collection_select(:manufacturer) %>
-</div>
-</div>
+ <div class="field">
+     <div class="control">
+         <%= f.label :name,  class: 'label' %>
+         <%= f.text_field :name, class: 'input' %>
+     </div>
+ </div>
 
 
 
+ <div class="field">
+     <%= f.label :manufacturer, 'Fabricante',  class: 'label' %>
+     <div class="control">
+         <div class="select">
+             <%= f.select(:manufacturer, PowerGenerator.distinct.pluck(:manufacturer) ) %>
+         </div>
+     </div>
+ </div>
+
+ <div class="field">
+     <div class="control">
+         <%= f.label :image_url, 'Imagem:', class: 'label' %>
+         <%= f.file_field :image_url, class: 'input' %>
+     </div>
+ </div>
+
+ <div class="field">
+     <div class="control">
+         <%= f.label :description, 'Descrição',  class: 'label' %>
+         <%= f.text_area :description, class: 'textarea' %>
+     </div>
+ </div>
+
+
+ <div class="field">
+     <div class="control">
+         <%= f.submit 'Recomendar', class: 'button is-primary' %>
+     </div>
+ </div>
 
 
  <% end %>
-
-   validates :name, :description, :image_url, :manufacturer, :price, :kwp, presence: true
-  validates :height, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 40 }
-  validates :width, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates :lenght, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 200 }
-  validates :weight, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 3000 }

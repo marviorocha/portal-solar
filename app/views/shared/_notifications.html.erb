@@ -1,0 +1,16 @@
+<p class="section is-small">
+
+    <% if(notice) %>
+    <div class="notification is-success">
+      <button class="delete"></button>
+     <%= notice %>
+    </div>
+<% end %>
+<% if(alert) %>
+
+    <div class="notification is-danger">
+        <button class="delete"></button>
+    <%= alert %>
+    </div>
+<% end %>
+</p>
