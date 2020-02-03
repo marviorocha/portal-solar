@@ -8,6 +8,7 @@
     "@rails/webpacker": "~4.0.7",
     "bulma": "^0.8.0",
     "jquery": "~3.4.1",
+    "micromodal": "^0.4.2",
     "turbolinks": "~5.2.0"
   },
   "version": "0.1.0",

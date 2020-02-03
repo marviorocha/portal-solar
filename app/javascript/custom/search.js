@@ -1,8 +1,6 @@
+ const $ = require("jquery");
  
-  const $ = require("jquery");
-
-  
-$(document).ready(function($){
+ function ready(event) {
 
   // jQuery methods go here...
   $("input[name='sample']").change(function(){
@@ -21,10 +19,6 @@ $(document).ready(function($){
  
 
   });  
-  
-   
-
-});
-
-
- 
+};
+// fix turbolink 
+$(document).on('turbolinks:load', ready);
