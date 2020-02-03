@@ -12,7 +12,9 @@ git add .
 git commit -m "🤖 Updating Portal Solar"
 
 # Add tag update to branch 
-TAG=deplyed_at_$(date + "%F_%H-%M")
+TAG=deployed_at_$(date +"%F_%H-%M")
+
+
 git tag -m '🤖 Deployed' - $TAG
 git push --follow-tags
 
