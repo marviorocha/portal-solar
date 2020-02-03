@@ -47,6 +47,12 @@ class PowerGeneratorsController < ApplicationController
     render :index
   end
 
+  def kwp
+    @power_generators = PowerGenerator.filter_kwp.page(params['page'])
+    render :index
+  end
+
+
 
   # Recomendation Power Generators for user
   def new
