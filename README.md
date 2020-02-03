@@ -13,6 +13,11 @@ Implementar novas funcionalidades ao sistema de busca, recomendação e melhor c
 - [x] Script para automação de deploy e github ./deploy
 - [x] Consultar frete baseado no CEP modelo 'Freight'
 
+# Links:
+
+(Portal Solar Test)[https://portal-solar-marvio.herokuapp.com/]
+(Recomendar um Gerador)[https://portal-solar-marvio.herokuapp.com/power_generators/new]
+
 
 Implementar uma funcionalidade de recomendação geradores de energia para o usuário utilizando os campos que existem no modelo de PowerGenerator. Em outras palavras, o usuário poderá informar alguns dados que possa ser utilizado para recomendar estes geradores de energia. Não se prenda a quantos e quais informações o usuário poderá informar. **O algoritmo de escolha é livre, fique a vontade**.
 
