@@ -10,13 +10,12 @@ git checkout master
 git merge developer
 git add . 
 git commit -m "🤖 Updating Portal Solar"
-
 # Add tag update to branch 
 TAG=deployed_at_$(date +"%F_%H-%M")
 
-
-git tag -m '🤖 Deployed' - $TAG
+git tag -m '' -a $TAG
 git push --follow-tags
+
 
 # Yahoo now let's go deploy to heroku
 
