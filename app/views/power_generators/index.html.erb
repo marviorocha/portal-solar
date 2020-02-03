@@ -116,7 +116,8 @@
         </p>
         <strong>Descrição: </strong><%= power_generator.description.truncate(250, omission: '...')  %>
         </p>
-        <%= link_to fa_icon('shop', text: 'Consultar Frete'), consultar_power_generators_path(power_generator), class: 'button' %>
+        <%= link_to fa_icon('shop', text: 'Consultar Frete'),
+         consultar_power_generators_path(power_generator), class: 'button', 'data-turbolinks' => 'false'   %>
       </div>
 
       <% end %>
