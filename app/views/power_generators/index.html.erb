@@ -10,17 +10,8 @@
             </a>
             <%= link_to "Recomendar um Gerador", new_power_generator_path, class: 'navbar-item is-active' %>
 
-            <a class="navbar-item">
-              Documentation
-            </a>
-            <span class="navbar-item">
-              <a class="button is-primary is-inverted">
-                <span class="icon">
-                  <%= fa_icon('github') %>
-                </span>
-                <span>Github</span>
-              </a>
-            </span>
+        
+          
           </div>
         </div>
       </div>
@@ -98,14 +89,16 @@
 <%= render('shared/notifications') %> 
  
         
-<button class="button is-primary is-large" data-target="modal" aria-haspopup="true">Launch example modal</button>
  <!--  Searching resulter ------- // -->
 <% if (flash['search']) %>
 <h1 class="title"> <%= flash['search'] %></h1>
 <% end %>
   <div class="column is-6">
     Filtrar por: <%= link_to  'Maior Preço', price_hight_power_generators_path %> |
-    <%= link_to  'Menor Preço', price_low_power_generators_path %> | <%= link_to  'Nome', name_power_generators_path %>
+    <%= link_to  'Menor Preço', price_low_power_generators_path %> | 
+    
+    <%= link_to  'Nome', name_power_generators_path %> |
+    <%= link_to  'Kwp', kwp_power_generators_path %>
   </div>
     <div class="columns is-multiline">
 

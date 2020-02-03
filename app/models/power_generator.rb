@@ -17,6 +17,7 @@ class PowerGenerator < ApplicationRecord
   # Scope to filter products
 
   scope :filter_name, -> {order(name: :asc)}
+  scope :filter_kwp, -> {order(kwp: :asc)}
   scope :filter_price_hight, -> {order(price: :asc)}
   scope :filter_price_low, -> {order(price: :desc)}
 
