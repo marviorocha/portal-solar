@@ -96,6 +96,9 @@
 
   <div class="container">
 <%= render('shared/notifications') %> 
+ 
+        
+<button class="button is-primary is-large" data-target="modal" aria-haspopup="true">Launch example modal</button>
  <!--  Searching resulter ------- // -->
 <% if (flash['search']) %>
 <h1 class="title"> <%= flash['search'] %></h1>
@@ -120,7 +123,7 @@
         </p>
         <strong>Descrição: </strong><%= power_generator.description.truncate(250, omission: '...')  %>
         </p>
-
+        <%= link_to fa_icon('shop', text: 'Consultar Frete'), consultar_power_generators_path(power_generator), class: 'button' %>
       </div>
 
       <% end %>

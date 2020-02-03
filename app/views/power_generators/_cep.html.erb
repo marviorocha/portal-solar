@@ -1,0 +1,55 @@
+
+ 
+<table class="table">
+<%= @freight.state %>
+<%= @freight.weight_min %>
+<%= @freight.weight_max %>
+
+<%= @power_generators.weight %>
+
+ 
+<h3 class='title is-4'>Produto: <%= @power_generators.name %></h3>
+<%= form_with url: consultar_power_generators_path, method: :get, local: true do |f| %>
+
+<div class="field">
+    <div class="control">
+    <%= f.label :cep, 'Digite seu CEP:' %>
+    <%= f.text_field :cep, class: 'input', placeholder: 'Por favor, informe seu CEP' %>
+     </div>
+</div>
+<div class="field">
+    <div class="control">
+    <%= f.submit 'Consultar Frete', class: 'button is-small' %>
+    </div>
+</div>
+<% end %>
+  <thead>
+    <tr>
+      <th><abbr title="Position">Serviço</abbr></th>
+      <th>Descrição:</th>
+      <th><abbr title="Valor">Valor:</abbr></th>
+      <th><abbr title="Prazo">Prazo:</abbr></th>
+       
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <tr>
+      <th><%= @servico.nome %></th>
+      <th><%= @servico.descricao %></th>
+       <th><%= number_to_currency(@servico.valor, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></th>
+       <th><%= @servico.prazo_entrega %> dia(s) úteis</th>
+    </tr>
+ <hr>
+    <tr>
+      <th><%= @sedex.nome %></th>
+      <th><%= @sedex.descricao %></th>
+       <th><%= number_to_currency(@sedex.valor, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></th>
+       <th><%= @sedex.prazo_entrega %> dia(s) úteis</th>
+    </tr>
+ 
+  </tbody>
+</table>
+
+
+ 

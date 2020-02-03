@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         get :name
         get "search"
         get "advanced"
+        get "consultar/:id", to: 'power_generators#consultar', as: 'consultar'
       end
     
  

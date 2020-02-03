@@ -1,12 +1,42 @@
 class PowerGeneratorsController < ApplicationController
  
   require 'correios-frete'
- 
+  require 'correios-cep'
   def index
+    
     @power_generators = PowerGenerator.filter_name.page(params['page'])
-    @frete = Correios::Frete::Calculador.new
+    frete = Correios::Frete::Calculador.new(:cep_origem => "04094-050",
+      :cep_destino => params['cep'],
+      :peso => 0.3,
+      :comprimento => 30,
+      :largura => 15,
+      :altura => 2)
+      
+      @servico = frete.calcular :pac
+      @sedex = frete.calcular_sedex
+    
   end
+  
+  def consultar
+    
+    @power_generators = PowerGenerator.find(params[:id])
+    @freight = Freight.find(params[:id])
+   
+    address = Correios::CEP::AddressFinder.get('27910-000')
+    puts address
+    frete = Correios::Frete::Calculador.new(
+    :cep_origem => "69920-999", 
+    :cep_destino => params['cep'],
+    :peso => 0.3,
+    :comprimento => 30,
+    :largura => 15,
+    :altura => 2)
+    
+    @servico = frete.calcular :pac
+    @sedex = frete.calcular_sedex
 
+
+  end
 
   # Filter for low price                                                                                                                                                              
    def price_low
@@ -74,6 +104,9 @@ class PowerGeneratorsController < ApplicationController
 
   def generators_params
     params.require(:power_generator).permit(:name, :description, :picture, :manufacturer)    
+  end
+
+  def frete_params
   end
 
 
