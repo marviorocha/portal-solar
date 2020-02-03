@@ -1,46 +1,35 @@
 class PowerGeneratorsController < ApplicationController
  
-  require 'correios-frete'
-  require 'correios-cep'
+  #  require 'correios-frete' We not working with it for this moment right!
+ 
+  require 'correios-cep' # Find CEP to User
+  
   def index
     
     @power_generators = PowerGenerator.filter_name.page(params['page'])
-    frete = Correios::Frete::Calculador.new(:cep_origem => "04094-050",
-      :cep_destino => params['cep'],
-      :peso => 0.3,
-      :comprimento => 30,
-      :largura => 15,
-      :altura => 2)
-      
-      @servico = frete.calcular :pac
-      @sedex = frete.calcular_sedex
-    
+     
   end
   
   def consultar
     
     @power_generators = PowerGenerator.find(params[:id])
-    @freight = Freight.find(params[:id])
-   
-    address = Correios::CEP::AddressFinder.get('27910-000')
-    puts address
-    frete = Correios::Frete::Calculador.new(
-    :cep_origem => "69920-999", 
-    :cep_destino => params['cep'],
-    :peso => 0.3,
-    :comprimento => 30,
-    :largura => 15,
-    :altura => 2)
     
-    @servico = frete.calcular :pac
-    @sedex = frete.calcular_sedex
-
-
+    
+    respond_to do |format|
+    
+    if params['cep'].present?
+    @address = Correios::CEP::AddressFinder.get(params['cep'])
+    @freight = Freight.find_by(state: @address[:state])
+  end
+   
+    format.html {render :consultar, notice: 'Valor para o frete:'}
+  
+    end
+      
   end
 
   # Filter for low price                                                                                                                                                              
    def price_low
-
     @power_generators = PowerGenerator.filter_price_low.page(params['page'])
     render :index
   end 
@@ -86,7 +75,6 @@ class PowerGeneratorsController < ApplicationController
   def search
 
   @power_generators = PowerGenerator.search_by_name(params['search']).page(params['page'])
-  
   flash.now[:search] = "Pesquisando por: #{params['search']}"
 
   render :index
@@ -94,8 +82,6 @@ class PowerGeneratorsController < ApplicationController
 
 
   private
-
-
 
   def generators_set
     @generators = PowerGenerator.find(params[:id])
