@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get :price_hight
         get :price_low
         get :name
+        get :kwp
         get "search"
         get "advanced"
         get "consultar/:id", to: 'power_generators#consultar', as: 'consultar'

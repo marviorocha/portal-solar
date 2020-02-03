@@ -12,9 +12,8 @@ git add .
 git commit -m "🤖 Updating Portal Solar"
 
 # Add tag update to branch 
-
-tag=deplyed_at_$(date + "%F_%H-%M")
-git tag -m '' - $tag
+TAG=deplyed_at_$(date + "%F_%H-%M")
+git tag -m '🤖 Deployed' - $TAG
 git push --follow-tags
 
 # Yahoo now let's go deploy to heroku
